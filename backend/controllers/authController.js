@@ -8,7 +8,7 @@ const register = async (req, res) => {
 
     if (!email || !password) {
       return res.status(400).json({
-        message: "Please provide all required fields",
+        message: `Please provide all required fields ${req}`,
       });
     }
 
@@ -44,8 +44,6 @@ const register = async (req, res) => {
       user: {
         id: user.id,
         email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
         role: user.role,
       },
     });

@@ -1,9 +1,15 @@
 import axios from "axios";
 
 export const authService = {
-  async register(userData) {
+  async register(email, password) {
     try {
-      const response = await axios.post("/api/auth/register", { userData });
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        {
+          email,
+          password,
+        }
+      );
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
@@ -18,7 +24,13 @@ export const authService = {
 
   async login(email, password) {
     try {
-      const response = await axios.post("/api/auth/login", { email, password });
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
@@ -27,7 +39,8 @@ export const authService = {
 
       return response.data;
     } catch (error) {
-      throw error.response?.data?.message || "Login failed";
+      // throw error.response?.data?.message || "Login failed";
+      throw error;
     }
   },
 
