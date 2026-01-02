@@ -35,7 +35,6 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
-    command: sh -c "npx prisma migrate deploy && npm run dev"
   postgres:
     image: postgres:15-alpine
     container_name: musicstudio-db
