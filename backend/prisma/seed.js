@@ -23,12 +23,26 @@ async function main() {
       role: "admin",
     },
   });
+
+  const gearList = [
+    "2 active columns QSC KW 122",
+    "Vocal microphone sennheiser 845s",
+    "Marshall JCM800 + 4x12 Marshall",
+    "Hartke Kilo",
+    "Hartke x 2",
+    "Gretsch Renown",
+    "Double bass pedal Gibraltar",
+  ];
   const studios = [
-    { name: "Sala A", price: 100 },
-    { name: "Sala B", price: 100 },
-    { name: "Sala C", price: 150 },
-    { name: "Studio A", price: 200 },
-    { name: "Studio B", price: 250 },
+    {
+      name: "Sala A",
+      price: 100,
+      imageUrl: "SalaA.jpg",
+    },
+    { name: "Sala B", price: 100, imageUrl: "SalaB.jpg" },
+    { name: "Sala C", price: 150, imageUrl: "SalaC.jpg" },
+    { name: "Studio A", price: 200, imageUrl: "StudioA.jpg" },
+    { name: "Studio B", price: 250, imageUrl: "StudioB.jpg" },
   ];
   for (const studio of studios) {
     await prisma.studio.upsert({
@@ -36,7 +50,7 @@ async function main() {
       update: {},
       create: {
         ...studio,
-        imageUrl: "https://example.com/studio.jpg",
+        gear: gearList,
       },
     });
   }

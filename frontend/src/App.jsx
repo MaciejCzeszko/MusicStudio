@@ -5,6 +5,7 @@ import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { About } from "./pages/About";
 import { Studios } from "./pages/Studios";
+import { Booking } from "./pages/Booking";
 
 function App() {
   return (

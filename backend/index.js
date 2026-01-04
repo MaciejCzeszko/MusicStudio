@@ -2,6 +2,7 @@ import express from "express";
 import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
+import studioRoutes from "./routes/studios.js";
 
 dotenv.config();
 
@@ -23,6 +24,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/studios", studioRoutes);
+
+app.use("/uploads", express.static("uploads"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
