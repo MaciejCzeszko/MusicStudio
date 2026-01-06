@@ -5,7 +5,7 @@ import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { About } from "./pages/About";
 import { Studios } from "./pages/Studios";
-import { Booking } from "./pages/Booking";
+import { Reservation } from "./pages/Reservation";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/studios" element={<Studios />} />
+        <Route path="/reservation/:id" element={<Reservation />} />
       </Routes>
     </Router>
   );

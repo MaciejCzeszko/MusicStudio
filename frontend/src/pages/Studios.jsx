@@ -7,7 +7,6 @@ export const Studios = () => {
   const navigate = useNavigate();
 
   const [studios, setStudios] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchStudios = async () => {
@@ -19,8 +18,7 @@ export const Studios = () => {
   }, []);
 
   const handleBook = (id) => {
-    setModalIsOpen(true);
-    console.log(modalIsOpen);
+    navigate(`/reservation/${id}`);
   };
 
   return (
@@ -51,7 +49,10 @@ export const Studios = () => {
                     {studio.gear.map((item, index) => {
                       return <p key={index}>{item}</p>;
                     })}
-                    <Button onClick={handleBook} style={"w-full"}>
+                    <Button
+                      onClick={() => handleBook(studio.id)}
+                      style={"w-full"}
+                    >
                       Book
                     </Button>
                   </div>
