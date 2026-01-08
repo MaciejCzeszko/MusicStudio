@@ -1,16 +1,19 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
   await prisma.user.deleteMany();
   await prisma.studio.deleteMany();
+  const hashedUserPassword = await bcrypt.hash("test", 10);
+  const hashedAdminPassword = await bcrypt.hash("admin", 10);
   const user1 = await prisma.user.upsert({
     where: { email: "test@test.com" },
     update: {},
     create: {
       email: "test@test.com",
-      password: "test",
+      password: hashedUserPassword,
       role: "user",
     },
   });
@@ -19,7 +22,7 @@ async function main() {
     update: {},
     create: {
       email: "admin@test.com",
-      password: "admin",
+      password: hashedAdminPassword,
       role: "admin",
     },
   });
