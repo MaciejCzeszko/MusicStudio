@@ -6,7 +6,7 @@ const getAllStudios = async (req, res) => {
 
     const studiosImages = studios.map((studio) => ({
       ...studio,
-      imageUrl: `http://localhost:5000/uploads/${studio.imageUrl}`,
+      imageUrl: `http://192.168.56.102:5000/uploads/${studio.imageUrl}`,
     }));
 
     res.json(studiosImages);
