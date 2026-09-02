@@ -1,8 +1,11 @@
 #!/bin/sh
 set -e
 
-echo "Waiting for postgres..."
-while ! nc -z musicstudio-db 5432; do
+DB_HOST=192.168.56.103
+DB_PORT=5432
+
+echo "Waiting for postgres at $DB_HOST:$DB_PORT..."
+while ! nc -z "$DB_HOST" "$DB_PORT"; do
   sleep 0.1
 done
 echo "PostgreSQL started"
