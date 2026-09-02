@@ -4,11 +4,11 @@ export const authService = {
   async register(email, password) {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "http://192.168.56.102:5000/api/auth/register",
         {
           email,
           password,
-        }
+        },
       );
 
       if (response.data.token) {
@@ -25,11 +25,11 @@ export const authService = {
   async login(email, password) {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://192.168.56.102:5000/api/auth/login",
         {
           email,
           password,
-        }
+        },
       );
 
       if (response.data.token) {
